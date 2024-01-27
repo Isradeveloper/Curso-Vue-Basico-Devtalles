@@ -22,7 +22,7 @@ export default {
       },
     },
   },
-  name: "counter-component",
+  name: "counter-component", 
   data() {
     return {
       counter: this.start,
