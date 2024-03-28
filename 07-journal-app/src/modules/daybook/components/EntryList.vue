@@ -6,13 +6,15 @@
         type="text"
         class="form-control"
         placeholder="Buscar entrada"
+        v-model="term"
       />
     </div>
 
     <div class="entry-scollarea">
       <entry-component
-        v-for="item in 100"
-        :key="item"
+        v-for="entry in entriesByTerm"
+        :key="entry.id"
+        :entry="entry"
       />
     </div>
 
@@ -21,10 +23,25 @@
 
 <script>
 import { defineAsyncComponent } from 'vue'
+import { mapGetters } from 'vuex';
 export default {
   name: 'entry-list-component',
   components: {
     "entry-component": defineAsyncComponent( () => import('./Entry.vue') )
+  },
+  data() {
+    return {
+      term: ""
+    }
+  },
+  computed: {
+    ...mapGetters('journal', ['getEntriesByTerm']),
+    entriesByTerm() {
+      return this.getEntriesByTerm(this.term)
+    }
+  },
+  methods: {
+    
   }
 }
 </script>
