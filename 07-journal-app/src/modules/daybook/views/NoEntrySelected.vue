@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center">
     <h1 class="align-self-center">No hay nada seleccionado</h1>
   </div>
-  <fab-component/>
+  <fab-component @evento-personalizado="$router.push({name: 'daybook-entry', params: {id: 'new'}})"/>
 </template>
 
 <script>

@@ -10,6 +10,13 @@
       />
     </div>
 
+    <div class="d-flex w-100 justify-content-center px-2 pb-2">
+      <button class="btn btn-primary w-100" @click="$router.push({name: 'daybook-entry', params: {id: 'new'}})">
+        <i class="fa fa-plus-circle"></i>
+        Nueva entrada
+      </button>
+    </div>
+
     <div class="entry-scollarea">
       <entry-component
         v-for="entry in entriesByTerm"
