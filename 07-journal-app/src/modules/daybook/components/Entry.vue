@@ -1,7 +1,7 @@
 <template>
   <div class="entry-container mb-3 pointer p-2" @click="$router.push({ name: 'daybook-entry', params: { id: 354 } })">
     
-    <div class="entry-title d-flex">
+    <div class="entry-title d-flex align-items-center">
       <span class="text-success fs-5 fw-bold">15</span>
       <span class="mx-1 fs-5">Julio</span>
       <span class="mx-2 fw-light">2021, Jueves</span>

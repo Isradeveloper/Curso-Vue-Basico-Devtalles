@@ -1,7 +1,7 @@
 export default {
 
   name: 'daybook',
-  component: () => import(/* webpackChunkName: "dayBook" */ '@/modules/daybook/layouts/DayBookLayout'),
+  component: () => import(/* webpackChunkName: "daybook" */ '@/modules/daybook/layouts/DayBookLayout'),
   children: [
     {
       path: '',

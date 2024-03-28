@@ -1,7 +1,7 @@
 <template>
   <div class="entry-title d-flex justify-content-between p-2">
 
-    <div>
+    <div class="d-flex align-items-center">
       <span class="text-success fs-3 fw-bold">15</span>
       <span class="fs-3 mx-1">Julio</span>
       <span class="fs-4 fw-ligth">2021, jueves</span>
