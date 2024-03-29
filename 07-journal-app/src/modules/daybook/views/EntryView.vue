@@ -11,10 +11,7 @@
 
         <input type="file" @change="onSelectedImage" ref="imageSelector" v-show="false" accept="image/*">
 
-        <button
-          v-if="id !== 'new'"
-          @click="onDeleteEntry()"
-          class="btn btn-danger mx-2">
+        <button v-if="id !== 'new'" @click="onDeleteEntry()" class="btn btn-danger mx-2">
           Borrar
           <i class="fa fa-trash-alt"></i>
         </button>
@@ -31,24 +28,11 @@
     </div>
   </template>
 
-  <fab-component
-    icon="fa-save"
-    @evento-personalizado="saveEntry()"
-  />
+  <fab-component icon="fa-save" @evento-personalizado="saveEntry()" />
 
-  <img
-    v-if="entry.picture && !localImage"
-    :src="entry.picture"
-    alt="entry-picture"
-    class="img-thumbnail"
-  />
+  <img v-if="entry.picture && !localImage" :src="entry.picture" alt="entry-picture" class="img-thumbnail" />
 
-  <img
-    v-if="localImage"
-    :src="localImage"
-    alt="entry-picture"
-    class="img-thumbnail"
-  />
+  <img v-if="localImage" :src="localImage" alt="entry-picture" class="img-thumbnail" />
 </template>
 
 <script>
@@ -100,7 +84,7 @@ export default {
     },
     ...mapActions('journal', ['updateEntry', 'createEntry', 'deleteEntry']),
     async saveEntry() {
-      
+
       new Swal({
         title: 'Espere, por favor...',
         allowOutsideClick: false
@@ -112,11 +96,11 @@ export default {
 
       if (this.entry.id) {
         await this.updateEntry(this.entry)
-      
+
       } else {
         //Crear
         const newId = await this.createEntry(this.entry)
-        this.$router.push({name: 'daybook-entry', params: {id: newId}})
+        this.$router.push({ name: 'daybook-entry', params: { id: newId } })
       }
 
       this.file = null
@@ -142,27 +126,27 @@ export default {
         Swal.showLoading()
 
         await this.deleteEntry(this.entry.id)
-        this.$router.push({name: 'daybook-no-entry'}) 
+        this.$router.push({ name: 'daybook-no-entry' })
 
         Swal.fire('Eliminado', 'Entrada eliminada con éxito', "success")
       }
 
     },
-    onSelectedImage({target}) {
+    onSelectedImage({ target }) {
       const file = target.files[0]
-      if (!file){
+      if (!file) {
         this.localImage = null
         this.file = null
         return
       }
 
       this.file = file
-      
+
       const fr = new FileReader()
       fr.onload = () => this.localImage = fr.result
       fr.readAsDataURL(file)
     },
-    onSelectImage(){
+    onSelectImage() {
       this.$refs.imageSelector.click()
     }
   },
