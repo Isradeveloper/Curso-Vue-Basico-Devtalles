@@ -4,13 +4,12 @@
   <h5 v-if="errorMsg">{{ errorMsg }}</h5>
 
   <div v-if="users.length > 0">
-
-    <userList :users="users" v-slot="{ user }">
-      <h5>{{ user.first_name }}  {{ user.last_name }}</h5>
-      <h6>{{ user.email }}</h6>
-      <img :src="user.avatar" alt="{{ user.first_name }}  {{ user.last_name }}">
-    </userList>
-
+    <ul>
+      <li v-for="user in users" :key="user.id">
+        <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+        <h6>{{ user.email }}</h6>
+      </li>
+    </ul>
   </div>
 
   <button @click="prevPage">Atras</button>
@@ -21,12 +20,8 @@
 
 <script>
 import useUsers from '@/composables/useUsers';
-import userList from '@/components/UserList.vue';
 
 export default {
-
-  components: { userList },
-
   setup() {
 
     const { currentPage, errorMsg, isLoading, users, nextPage, prevPage } = useUsers()
